@@ -9,19 +9,20 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          pkg-manager: npm install      
+          pkg-manager: npm 
+      - run:
+          command: npm run test
+          name: Run tests
       - run:
           command: npm run build
           name: Build app
-      - run:
-          command: npm run test
-          name: Run tests          
+                
       - persist_to_workspace:
           root: ~/project
           paths:
             - .
 
-  deploy: # this can be any name you choose
+  deploy: test_deploy # this can be any name you choose
     executor: heroku/default
     steps:
       - attach_workspace:
