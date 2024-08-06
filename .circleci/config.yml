@@ -21,9 +21,6 @@ jobs:
           name: Deploy to S3
           command: |
             aws s3 sync build/ s3://pipeline-bucket-mahendra-s3 --delete
-    environment:
-      - AWS_ACCESS_KEY_ID: your-aws-access-key-id
-      - AWS_SECRET_ACCESS_KEY: your-aws-secret-access-key
 
 workflows:
   version: 2
