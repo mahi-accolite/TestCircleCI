@@ -16,3 +16,10 @@ jobs:
           command: | 
             npm install
             npm run build
+    - run:
+          name: Deploy to S3
+          command: |
+            aws s3 sync build/ s3://pipeline-bucket-mahendra-s3 --delete
+    environment:
+      - AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
