@@ -6,3 +6,13 @@ executors:
   aws-executor:
     docker:
       - image: 'cimg/node:20.15.1'
+jobs:
+  build:
+    executor: aws-executor
+    steps:
+    - checkout
+    - run:
+          name: 'Build CDK App'
+          command: | 
+            npm install
+            npm run build
